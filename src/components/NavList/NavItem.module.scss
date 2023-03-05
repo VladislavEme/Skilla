@@ -1,0 +1,46 @@
+.item {
+  position: relative;
+  font-size: 16px;
+  display: flex;
+  cursor: pointer;
+  padding: 15px 22px 17px 13px;
+  line-height: 20px;
+  color: #FFF;
+  opacity: 0.56;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: rgba(216, 228, 251, 0.32);
+    opacity: 1;
+  }
+
+  &.active {
+    opacity: 1;
+    background-color: rgba(216, 228, 251, 0.32);
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background-color: #002CFB;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      right: 12px;
+      top: 22px;
+      background-color: #FFD500;
+      border-radius: 50%;
+    }
+  }
+}
+
+.img {
+  margin-right: 13px;
+}

@@ -1,0 +1,25 @@
+.nav {
+  width: 240px;
+  height: 100vh;
+  background-color: #091336;
+  z-index: 10;
+}
+
+.logo {
+  cursor: pointer;
+  padding-top: 20px;
+  padding-left: 12px;
+  margin-bottom: 32px;
+}
+
+
+.nav__list {
+  margin-bottom: 64px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  gap: 32px;
+}
