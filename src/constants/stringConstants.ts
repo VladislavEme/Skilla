@@ -13,3 +13,5 @@ export const month = [
   'ноябрь',
   'декабрь',
 ];
+
+export const dateRange = ['3 дня', 'Неделя', 'Месяц', 'Год'];

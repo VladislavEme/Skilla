@@ -1,0 +1,53 @@
+.root {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #899CB1;
+  min-width: 115px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  transition: color 0.2s ease-in-out;
+
+  svg {
+    margin-right: 8px;
+
+    path {
+      transition: fill 0.2s ease-in-out;
+    }
+  }
+
+  &:hover {
+    svg path {
+      fill: #002CFB
+    }
+
+    color: #002CFB
+  }
+}
+
+.button {
+  cursor: pointer;
+  padding: 10px 0;
+  background: none;
+  border: none;
+
+  svg path {
+    transition: fill 0.2s ease-in-out;
+  }
+
+  &:hover {
+    svg path {
+      fill: #002CFB
+    }
+  }
+}
+
+.range {
+  color: #005FF8
+}

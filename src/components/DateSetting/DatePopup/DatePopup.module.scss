@@ -1,0 +1,22 @@
+.root {
+  width: 204px;
+  font-size: 14px;
+  line-height: 28px;
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  background-color: #FFF;
+  cursor: pointer;
+  border: 1px solid #EAF0FA;
+  box-shadow: 0px 0px 26px rgba(233, 237, 243, 0.8);
+  border-radius: 4px;
+}
+
+.item {
+  padding: 6px 20px;
+
+  &:hover {
+    background-color: rgb(0, 44, 251, 0.13);
+    color: #122945;
+  }
+}

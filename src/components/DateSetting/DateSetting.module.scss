@@ -1,0 +1,38 @@
+.root {
+  padding: 0 120px;
+  display: flex;
+  justify-content: end;
+}
+
+.balance {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: #FFF;
+  padding: 8px 12px;
+  border-radius: 48px;
+  font-size: 14px;
+  color: #899CB1;
+  margin-right: 48px;
+
+  svg path {
+    transition: fill 0.2s ease-in-out;
+  }
+
+  &:hover {
+    .sum {
+      color: #0024CB
+    }
+
+    svg path {
+      fill: #0024CB
+    }
+  }
+}
+
+.sum {
+  color: #122945;
+  font-weight: 500;
+  margin-right: 10px;
+  transition: color 0.2s ease-in-out;
+}
