@@ -1,0 +1,27 @@
+.root {
+  position: relative;
+  color: #899CB1
+}
+
+.title {
+  transition: color 0.2s ease-in-out;
+  font-size: 14px;
+  color: #5E7793;
+  cursor: pointer;
+
+  svg path {
+    transition: fill 0.2s ease-in-out;
+  }
+
+  &:hover {
+    color: #002CFB;
+
+    svg path {
+      fill: #002CFB
+    }
+  }
+}
+
+.text {
+  margin-right: 8px;
+}

@@ -1,15 +1,15 @@
 import { FC, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { dateRange } from '../../constants/stringConstants';
+import { DATE_RANGE } from '../../constants/stringConstants';
 import { setActiveDate, setIsOpen } from '../../redux/dateSlice';
 import { RootState } from '../../redux/store';
-import { DatePopup } from '../DateSetting/DatePopup';
+import { PopupDate } from '../PopupDate';
 import styles from './DateFilter.module.scss';
 
 export const DateFilter: FC = () => {
   const dispatch = useDispatch();
-  const sortRef = useRef<HTMLDivElement>(null);
   const { activeDate, isOpen } = useSelector((state: RootState) => state.date);
+  const sortRef = useRef<HTMLDivElement>(null);
 
   const clickFilter = () => {
     dispatch(setIsOpen(!isOpen));
@@ -17,6 +17,11 @@ export const DateFilter: FC = () => {
 
   const clickButton = (i: number) => {
     dispatch(setActiveDate(activeDate + i));
+  };
+
+  const clickDateItem = (i: number) => {
+    dispatch(setActiveDate(i));
+    dispatch(setIsOpen(false));
   };
 
   useEffect(() => {
@@ -44,7 +49,7 @@ export const DateFilter: FC = () => {
             fill='#ADBFDF'
           />
         </svg>
-        <span className={styles.range}>{dateRange[activeDate]}</span>
+        <span className={styles.range}>{DATE_RANGE[activeDate]}</span>
       </div>
 
       <button className={styles.button} onClick={() => clickButton(+1)} disabled={activeDate === 3 ? true : false}>
@@ -55,7 +60,7 @@ export const DateFilter: FC = () => {
           />
         </svg>
       </button>
-      {isOpen && <DatePopup />}
+      {isOpen && <PopupDate popupItems={DATE_RANGE} clickItem={clickDateItem} />}
     </div>
   );
 };

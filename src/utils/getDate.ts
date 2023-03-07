@@ -1,4 +1,4 @@
-import { day, month } from '../constants/stringConstants';
+import { DAY, MONTH } from '../constants/stringConstants';
 
 export const getDate = () => {
   const date = new Date();
@@ -6,5 +6,5 @@ export const getDate = () => {
   const dateNumber = date.getDate();
   const indexMonth = date.getMonth();
 
-  return `${day[indexDay]}, ${dateNumber} ${month[indexMonth]}`;
+  return `${DAY[indexDay]}, ${dateNumber} ${MONTH[indexMonth]}`;
 };
