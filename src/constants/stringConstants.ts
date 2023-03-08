@@ -15,4 +15,3 @@ export const MONTH = [
 ];
 
 export const DATE_RANGE = ['3 дня', 'Неделя', 'Месяц', 'Год'];
-export const CALL_TYPE = ['Все типы', 'Входящие', 'Исходящие'];

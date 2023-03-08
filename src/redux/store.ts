@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import dateSlice from './dateSlice';
+import popupSlice from './popup/slice';
 
 export const store = configureStore({
   reducer: {
-    date: dateSlice,
+    popup: popupSlice,
   },
 });
 

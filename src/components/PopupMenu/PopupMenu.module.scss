@@ -22,6 +22,14 @@
   }
 }
 
+svg {
+  transition: transform 0.2s ease-in-out;
+}
+
 .text {
   margin-right: 8px;
+}
+
+.svg {
+  transform: rotate(180deg);
 }

@@ -1,0 +1,17 @@
+.root {
+  display: flex;
+  font-size: 14px;
+  color: #5E7793;
+  gap: 12px;
+  cursor: pointer;
+
+  svg path {
+    transition: fill 0.2s ease-in-out;
+  }
+
+  &:hover {
+    svg path {
+      fill: #002CFB;
+    }
+  }
+}

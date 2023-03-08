@@ -15,6 +15,7 @@
 
 .item {
   padding: 6px 20px;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, ;
 
   &:hover {
     background-color: rgb(0, 44, 251, 0.13);
