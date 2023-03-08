@@ -1,0 +1,35 @@
+.root {
+  width: 1440px;
+  margin: 0 auto;
+  background-color: #FFF;
+  box-shadow: 0px 4px 5px #E9EDF3;
+  border-radius: 8px;
+  padding: 26px 40px;
+}
+
+.main {
+  font-size: 14px;
+  color: #899CB1;
+  display: grid;
+  grid-template-columns: 53px 89px 128px 326px 214px 461px 90px;
+  margin-bottom: 21px;
+}
+
+.call {
+  position: relative;
+  height: 65px;
+  display: grid;
+  grid-template-columns: 53px 89px 128px 326px 214px 461px 90px;
+  align-items: center;
+  font-size: 15px;
+  color: #122945;
+
+  &:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    top: 0;
+    height: 1px;
+    background-color: #EAF0FA;
+  }
+}

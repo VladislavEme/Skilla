@@ -65,7 +65,7 @@ export const Sort: FC = () => {
       changeActiveItem: setActiveSources,
     },
     {
-      items: ['Все ошибки', 'Все ошибки', 'Имя', 'Цена', 'Скидка', 'Предзаказ', 'Благодарность', 'Стоп слова'],
+      items: ['Все ошибки', 'Имя', 'Цена', 'Скидка', 'Предзаказ', 'Благодарность', 'Стоп слова'],
       isOpen: isOpenEstimates,
       changeIsOpen: setIsOpenEstimates,
       activeItem: activeEstimates,
@@ -86,6 +86,7 @@ export const Sort: FC = () => {
       <div className={styles.sort}>
         {popupParams.map((item, i) => (
           <PopupMenu
+            key={i}
             isOpen={item.isOpen}
             activeItem={item.activeItem}
             changeIsOpen={item.changeIsOpen}

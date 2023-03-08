@@ -1,8 +1,10 @@
 .nav {
   width: 240px;
-  height: 1000px;
-  background-color: #091336;
+  height: 100vh;
+  position: sticky;
+  top: 0;
   z-index: 10;
+  background-color: #091336;
 }
 
 .logo {

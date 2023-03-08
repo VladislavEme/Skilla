@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { CallsContent } from '../../components/CallsContent';
 import { DateSetting } from '../../components/DateSetting';
 import { Header } from '../../components/Header';
 import { Nav } from '../../components/Nav';
@@ -13,6 +14,7 @@ export const Calls: FC = () => {
         <Header />
         <DateSetting />
         <Sort />
+        <CallsContent />
       </div>
     </div>
   );
