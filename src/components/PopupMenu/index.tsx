@@ -1,33 +1,33 @@
-import { FC, useEffect, useRef } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { PopupItems } from './PopupItems';
 import styles from './PopupMenu.module.scss';
 
 interface PopupMenuProps {
-  isOpen: boolean;
   activeItem: number;
   popupItems: string[];
-  changeIsOpen: any;
   changeActiveItem: any;
 }
 
-export const PopupMenu: FC<PopupMenuProps> = ({ isOpen, activeItem, changeIsOpen, changeActiveItem, popupItems }) => {
+export const PopupMenu: FC<PopupMenuProps> = ({ activeItem, changeActiveItem, popupItems }) => {
   const dispatch = useDispatch();
   const sortRef = useRef<HTMLDivElement>(null);
 
+  const [isOpen, setIsOpen] = useState<Boolean>(false);
+
   const clickActiveItem = () => {
-    dispatch(changeIsOpen(!isOpen));
+    setIsOpen(!isOpen);
   };
 
   const clickMenuItem = (i: number) => {
     dispatch(changeActiveItem(i));
-    dispatch(changeIsOpen(false));
+    setIsOpen(false);
   };
 
   useEffect(() => {
     const clickOutside = (event: MouseEvent) => {
       if (sortRef.current && !event.composedPath().includes(sortRef.current)) {
-        dispatch(changeIsOpen(false));
+        setIsOpen(false);
       }
     };
     document.body.addEventListener('click', clickOutside);

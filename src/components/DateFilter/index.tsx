@@ -1,18 +1,20 @@
-import { FC, useEffect, useRef } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { DATE_RANGE } from '../../constants/stringConstants';
-import { setActiveDate, setIsOpenDate } from '../../redux/popup/slice';
+import { setActiveDate } from '../../redux/popup/slice';
 import { RootState } from '../../redux/store';
 import { PopupItems } from '../PopupMenu/PopupItems';
 import styles from './DateFilter.module.scss';
 
 export const DateFilter: FC = () => {
   const dispatch = useDispatch();
-  const { activeDate, isOpenDate } = useSelector((state: RootState) => state.popup);
+  const { activeDate } = useSelector((state: RootState) => state.popup);
   const sortRef = useRef<HTMLDivElement>(null);
 
+  const [isOpen, setIsOpen] = useState<Boolean>(false);
+
   const clickFilter = () => {
-    dispatch(setIsOpenDate(!isOpenDate));
+    setIsOpen(!isOpen);
   };
 
   const clickButton = (i: number) => {
@@ -21,13 +23,13 @@ export const DateFilter: FC = () => {
 
   const clickDateItem = (i: number) => {
     dispatch(setActiveDate(i));
-    dispatch(setIsOpenDate(false));
+    setIsOpen(false);
   };
 
   useEffect(() => {
     const clickOutside = (event: MouseEvent) => {
       if (sortRef.current && !event.composedPath().includes(sortRef.current)) {
-        dispatch(setIsOpenDate(false));
+        setIsOpen(false);
       }
     };
     document.body.addEventListener('click', clickOutside);
@@ -60,7 +62,7 @@ export const DateFilter: FC = () => {
           />
         </svg>
       </button>
-      {isOpenDate && <PopupItems popupItems={DATE_RANGE} clickItem={clickDateItem} />}
+      {isOpen && <PopupItems popupItems={DATE_RANGE} clickItem={clickDateItem} />}
     </div>
   );
 };

@@ -5,13 +5,16 @@ import { RootState } from '../../redux/store';
 
 import styles from './CallsContent.module.scss';
 import { CallItem } from '../CallItem';
+import { TITLE_TABLE } from '../../constants/stringConstants';
+import { CustomCheckbox } from '../CustomCheckbox';
+import { AudioRecord } from '../AudioRecord';
 
 export const CallsContent: FC = () => {
   const dispatch = useDispatch();
   const { calls } = useSelector((state: RootState) => state.calls);
 
   useEffect(() => {
-    const postData = async (url = 'https://api.skilla.ru/mango/getList') => {
+    const postData = async (url = 'https://api.skilla.ru/mango/getList?limit=1000') => {
       const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -33,23 +36,20 @@ export const CallsContent: FC = () => {
 
   return (
     <div className={styles.root}>
-      <table>
+      <table className={styles.table}>
         <thead>
           <tr className={styles.main}>
-            <td>Тип</td>
-            <td>Время</td>
-            <td>Сотрудник</td>
-            <td>Звонок</td>
-            <td>Источник</td>
-            <td>Оценка</td>
-            <td>Длительность</td>
+            <td className={styles.checkbox}>
+              <CustomCheckbox />
+            </td>
+            {TITLE_TABLE.map((item, i) => (
+              <td key={i}>{item}</td>
+            ))}
           </tr>
         </thead>
         <tbody>
           {calls.map((item: any) => (
-            <tr className={styles.call} key={item.id}>
-              <CallItem content={item} />
-            </tr>
+            <CallItem content={item} key={item.id} />
           ))}
         </tbody>
       </table>

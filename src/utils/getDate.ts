@@ -1,14 +1,3 @@
-import { DAY, MONTH } from '../constants/stringConstants';
-
-export const getDate = () => {
-  const date = new Date();
-  const indexDay = date.getDay();
-  const dateNumber = date.getDate();
-  const indexMonth = date.getMonth();
-
-  return `${DAY[indexDay]}, ${dateNumber} ${MONTH[indexMonth]}`;
-};
-
 export const insertZeroNum = (count: number) => {
   return count < 10 ? `0${count}` : count;
 };

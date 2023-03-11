@@ -1,7 +1,65 @@
+.call {
+  padding: 0 40px;
+  position: relative;
+  height: 65px;
+  display: grid;
+  grid-template-columns: 53px 89px 128px 326px 214px 460px 90px;
+  align-items: center;
+  font-size: 15px;
+  color: #122945;
+  transition: background-color 0.2s ease-in-out;
+
+  &:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    top: 0;
+    height: 1px;
+    background-color: #EAF0FA;
+  }
+
+  &:hover {
+    background-color: rgba(212, 223, 243, 0.17);
+
+
+    .checkbox,
+    .record {
+      visibility: visible;
+    }
+
+    .durate {
+      visibility: hidden;
+    }
+  }
+}
+
 .durate {
   justify-self: end;
 }
 
 .source {
   color: #5E7793;
+}
+
+.grade {
+  color: #EA1A4F;
+  font-size: 14px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.checkbox {
+  position: absolute;
+  left: 12px;
+  visibility: hidden;
+}
+
+.record {
+  visibility: hidden;
+  position: absolute;
+  right: 40px;
 }

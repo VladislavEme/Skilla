@@ -4,6 +4,7 @@ import { StatisticsBlock } from '../StatisticsBlock';
 import search from '../../assets/img/headerSvg/search.svg';
 import styles from './Header.module.scss';
 import { Client } from '../Client';
+import { CustomCheckbox } from '../CustomCheckbox';
 
 export const Header: FC = () => {
   return (
