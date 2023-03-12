@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { DateState } from './types';
+import { DateFilterState } from './types';
 
-const initialState: DateState = {
+const initialState: DateFilterState = {
   dateStart: '',
   dateEnd: '',
 };
 
-export const dateSlice = createSlice({
-  name: 'date',
+export const dateFilterSlice = createSlice({
+  name: 'dateFilter',
   initialState,
   reducers: {
     setDateStart: (state, action: PayloadAction<any>) => {
@@ -20,6 +20,6 @@ export const dateSlice = createSlice({
   },
 });
 
-export const { setDateStart, setDateEnd } = dateSlice.actions;
+export const { setDateStart, setDateEnd } = dateFilterSlice.actions;
 
-export default dateSlice.reducer;
+export default dateFilterSlice.reducer;

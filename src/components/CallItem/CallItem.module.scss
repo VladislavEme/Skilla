@@ -9,7 +9,7 @@
   color: #122945;
   transition: background-color 0.2s ease-in-out;
 
-  &:before {
+  &::before {
     position: absolute;
     content: "";
     width: 100%;
@@ -30,6 +30,16 @@
     .durate {
       visibility: hidden;
     }
+  }
+}
+
+.date_full {
+  color: #122945;
+  font-size: 15px;
+  display: flex;
+
+  &::before {
+    opacity: 0;
   }
 }
 

@@ -1,13 +1,13 @@
 import { FC, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setDateStart, setDateEnd } from '../../redux/date/slice';
+import { setDateStart, setDateEnd } from '../../redux/dateFilter/slice';
 import { RootState } from '../../redux/store';
 import { getDateFormat } from '../../utils/getDate';
 import styles from './DateSelection.module.scss';
 
 export const DateSelection: FC = () => {
   const dispatch = useDispatch();
-  const { dateStart, dateEnd } = useSelector((state: RootState) => state.date);
+  const { dateStart, dateEnd } = useSelector((state: RootState) => state.dateFilter);
   const inputStartRef = useRef<any>(null);
   const inputEndRef = useRef<any>(null);
 

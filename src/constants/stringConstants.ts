@@ -24,4 +24,3 @@ export const ESTIMATES = [
   '3',
 ];
 export const ERRORS = ['Все ошибки', 'Имя', 'Цена', 'Скидка', 'Предзаказ', 'Благодарность', 'Стоп слова'];
-// export const DATE =

@@ -8,6 +8,7 @@ import { CustomCheckbox } from '../CustomCheckbox';
 import styles from './CallsContent.module.scss';
 import { LoadingAnimation } from '../LoadingAnimation/LoadingAnimation';
 import { getDatePeriod } from '../../utils/getDate';
+import { NotFoundBlock } from '../NotFoundBlock';
 
 export const CallsContent: FC = () => {
   const dispatch = useDispatch();
@@ -15,17 +16,15 @@ export const CallsContent: FC = () => {
 
   const { calls } = useSelector((state: RootState) => state.calls);
   const { activeCallType, activeDate } = useSelector((state: RootState) => state.popup);
-  //если есть датаСтарт или ДатаКонец, то передать в эти параметры ''
+  const { dateStart, dateEnd } = useSelector((state: RootState) => state.dateFilter);
+
   const typeCallParams = activeCallType === 2 ? '&in_out=0' : activeCallType === 1 ? '&in_out=1' : '';
-
-  const dateParams = getDatePeriod(activeDate);
-
-  //dateStart = dataStart? `&data_start=датаСтарт` : ''
-  //dateEnd = redux
-  //передаем в запрос и передаем в зависимости
+  const dateStartParams = dateStart ? `&date_start=${dateStart}` : '';
+  const dateEndParams = dateEnd ? `&date_end=${dateEnd}` : '';
+  const dateParams = dateStart || dateEnd ? `${dateStartParams}${dateEndParams}` : getDatePeriod(activeDate);
 
   useEffect(() => {
-    const postData = async (url = `https://api.skilla.ru/mango/getList?limit=50${typeCallParams}${dateParams}`) => {
+    const postData = async (url = `https://api.skilla.ru/mango/getList?limit=200${typeCallParams}${dateParams}`) => {
       setIsLoad(false);
       const response = await fetch(url, {
         method: 'POST',
@@ -45,7 +44,7 @@ export const CallsContent: FC = () => {
       setIsLoad(true);
     };
     postData();
-  }, [activeCallType, activeDate]);
+  }, [activeCallType, activeDate, dateStart, dateEnd]);
 
   return (
     <div className={styles.root}>
@@ -61,14 +60,15 @@ export const CallsContent: FC = () => {
           </tr>
         </thead>
         <tbody>
+          {!calls.length && isLoad && <NotFoundBlock />}
           {!isLoad ? (
-            <tr>
-              <td className={styles.loading}>
+            <tr className={styles.loading}>
+              <td>
                 <LoadingAnimation />
               </td>
             </tr>
           ) : (
-            calls.map((item: any) => <CallItem content={item} key={item.id} />)
+            calls.map((item: any, i: number) => <CallItem content={item} key={item.id} index={i} />)
           )}
         </tbody>
       </table>

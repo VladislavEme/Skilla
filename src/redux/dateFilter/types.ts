@@ -1,4 +1,4 @@
-export interface DateState {
+export interface DateFilterState {
   dateStart: string;
   dateEnd: string;
 }

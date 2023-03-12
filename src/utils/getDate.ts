@@ -50,5 +50,11 @@ export const getDateFormat = (value: string) => {
   return `${insertZeroNum(day)}.${insertZeroNum(month + 1)}.${yearFormatted}`;
 };
 
-// &date_end=${getDateStart()}
-// console.log(getDateFormat('2023-03-07'));
+export const getDateTable = (value: string) => {
+  const formatter = new Intl.DateTimeFormat('ru', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+  return formatter.format(new Date(value));
+};

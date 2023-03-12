@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { DATE_RANGE } from '../../constants/stringConstants';
-import { setDateEnd, setDateStart } from '../../redux/date/slice';
+import { setDateEnd, setDateStart } from '../../redux/dateFilter/slice';
 import { setActiveDate } from '../../redux/popup/slice';
 import { RootState } from '../../redux/store';
 import { getDateFormat } from '../../utils/getDate';
@@ -11,7 +11,7 @@ import styles from './DateFilter.module.scss';
 export const DateFilter: FC = () => {
   const dispatch = useDispatch();
   const { activeDate } = useSelector((state: RootState) => state.popup);
-  const { dateStart, dateEnd } = useSelector((state: RootState) => state.date);
+  const { dateStart, dateEnd } = useSelector((state: RootState) => state.dateFilter);
   const sortRef = useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = useState<Boolean>(false);
@@ -30,7 +30,6 @@ export const DateFilter: FC = () => {
     dispatch(setActiveDate(activeDate + i));
   };
 
-  //если выбрана дата, то не должен быть фильтр по дням/неделе/году
   const clickDateItem = (i: number) => {
     dispatch(setActiveDate(i));
     dispatch(setDateStart(''));
