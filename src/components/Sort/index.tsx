@@ -12,6 +12,7 @@ import {
 import { PopupMenu } from '../PopupMenu';
 import styles from './Sort.module.scss';
 import { SearchCalls } from '../SearchCalls';
+import { CALLS, CALL_TYPE, ERRORS, ESTIMATES, SOURCES, WORKERS } from '../../constants/stringConstants';
 
 export const Sort: FC = () => {
   const { activeCallType, activeWorkers, activeCalls, activeSources, activeEstimates, activeErrors } = useSelector(
@@ -20,32 +21,32 @@ export const Sort: FC = () => {
 
   const popupParams = [
     {
-      items: ['Все типы', 'Входящие', 'Исходящие'],
+      items: CALL_TYPE,
       activeItem: activeCallType,
       changeActiveItem: setActiveCallType,
     },
     {
-      items: ['Все сотрудники', 'Константин К.', 'Полина З.'],
+      items: WORKERS,
       activeItem: activeWorkers,
       changeActiveItem: setActiveWorkers,
     },
     {
-      items: ['Все звонки', 'Все клиенты', 'Новые клиенты', 'Все исполнители', 'Через приложение', 'Прочие звонки'],
+      items: CALLS,
       activeItem: activeCalls,
       changeActiveItem: setActiveCalls,
     },
     {
-      items: ['Все источники', 'Rabota.ru', 'Санкт-Петербург', 'Google', 'Yandex'],
+      items: SOURCES,
       activeItem: activeSources,
       changeActiveItem: setActiveSources,
     },
     {
-      items: ['Все ошибки', 'Имя', 'Цена', 'Скидка', 'Предзаказ', 'Благодарность', 'Стоп слова'],
+      items: ESTIMATES,
       activeItem: activeEstimates,
       changeActiveItem: setActiveEstimates,
     },
     {
-      items: ['Все оценки', 'Распознать', 'Скрипт не использован', 'Плохо', 'Хорошо', 'Отлично', '1', '2', '3'],
+      items: ERRORS,
       activeItem: activeErrors,
       changeActiveItem: setActiveErrors,
     },

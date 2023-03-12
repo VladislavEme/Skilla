@@ -1,6 +1,8 @@
 import { FC } from 'react';
-import incimingCall from '../../assets/img/callsSvg/incomingCall.svg';
-import outgoingCall from '../../assets/img/callsSvg/outgoingCall.svg';
+import inciming from '../../assets/img/callsSvg/incoming.svg';
+import incimingSkip from '../../assets/img/callsSvg/incomingSkip.svg';
+import outgoing from '../../assets/img/callsSvg/outgoing.svg';
+import outgoingSkip from '../../assets/img/callsSvg/outgoingSkip.svg';
 import { getTime } from '../../utils/getDate';
 import { getDurateTime } from '../../utils/getDurateTime';
 import { getFormatPhone } from '../../utils/getFotmatPhone';
@@ -13,15 +15,28 @@ interface CallItemProps {
 }
 
 export const CallItem: FC<CallItemProps> = ({ content }) => {
-  const { in_out, person_avatar, date, partner_data, source, time, errors, record, partnership_id } = content;
+  const { in_out, person_avatar, date, partner_data, source, time, errors, record, partnership_id, status } = content;
+
+  const raisePhone = status === 'Дозвонился' ? true : false;
+
+  const statusIcon =
+    raisePhone && in_out
+      ? inciming
+      : raisePhone && !in_out
+      ? outgoing
+      : !raisePhone && in_out
+      ? incimingSkip
+      : outgoingSkip;
+
   const durate = getDurateTime(time);
+
   return (
     <tr className={styles.call}>
       <td className={styles.checkbox}>
         <CustomCheckbox />
       </td>
       <td>
-        <img src={in_out === 1 ? incimingCall : outgoingCall} />
+        <img src={statusIcon} />
       </td>
       <td>{getTime(date)}</td>
       <td>{person_avatar ? <img className={styles.avatar} width={32} src={person_avatar} /> : 'No avatar'}</td>

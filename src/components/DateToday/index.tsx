@@ -1,6 +1,7 @@
-import styles from './Date.module.scss';
+import { FC } from 'react';
+import styles from './DateToday.module.scss';
 
-export const DateDay = () => {
+export const DateToday: FC = () => {
   const formatter = new Intl.DateTimeFormat('ru', {
     weekday: 'long',
     month: 'long',

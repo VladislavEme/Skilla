@@ -1,28 +1,40 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { DATE_RANGE } from '../../constants/stringConstants';
+import { setDateEnd, setDateStart } from '../../redux/date/slice';
 import { setActiveDate } from '../../redux/popup/slice';
 import { RootState } from '../../redux/store';
+import { getDateFormat } from '../../utils/getDate';
 import { PopupItems } from '../PopupMenu/PopupItems';
 import styles from './DateFilter.module.scss';
 
 export const DateFilter: FC = () => {
   const dispatch = useDispatch();
   const { activeDate } = useSelector((state: RootState) => state.popup);
+  const { dateStart, dateEnd } = useSelector((state: RootState) => state.date);
   const sortRef = useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = useState<Boolean>(false);
+
+  const dateStartstring = dateStart ? getDateFormat(dateStart) : '_ _._ _._ _';
+  const dateEndstring = dateEnd ? getDateFormat(dateEnd) : '_ _._ _._ _';
+  const activeItem = dateStart || dateEnd ? `${dateStartstring} - ${dateEndstring}` : DATE_RANGE[activeDate];
 
   const clickFilter = () => {
     setIsOpen(!isOpen);
   };
 
   const clickButton = (i: number) => {
+    dispatch(setDateStart(''));
+    dispatch(setDateEnd(''));
     dispatch(setActiveDate(activeDate + i));
   };
 
+  //если выбрана дата, то не должен быть фильтр по дням/неделе/году
   const clickDateItem = (i: number) => {
     dispatch(setActiveDate(i));
+    dispatch(setDateStart(''));
+    dispatch(setDateEnd(''));
     setIsOpen(false);
   };
 
@@ -51,7 +63,7 @@ export const DateFilter: FC = () => {
             fill='#ADBFDF'
           />
         </svg>
-        <span className={styles.range}>{DATE_RANGE[activeDate]}</span>
+        <span className={styles.range}>{activeItem}</span>
       </div>
 
       <button className={styles.button} onClick={() => clickButton(+1)} disabled={activeDate === 3 ? true : false}>
